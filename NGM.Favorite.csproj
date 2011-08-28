@@ -54,6 +54,7 @@
     <Compile Include="Controllers\VoteController.cs" />
     <Compile Include="Drivers\FavoritePartDriver.cs" />
     <Compile Include="Handlers\FavoritePartHandler.cs" />
+    <Compile Include="Models\Constants.cs" />
     <Compile Include="Settings\FavoriteTypePartSettings.cs" />
     <Compile Include="Models\FavoritePart.cs" />
     <Compile Include="Migrations.cs" />

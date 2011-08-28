@@ -32,13 +32,16 @@ namespace NGM.Favorite.Controllers {
             if (currentUser == null)
                 return this.RedirectLocal(returnUrl, "~/");
 
-            var currentVote = _votingService.Get(vote => vote.Username == currentUser.UserName && vote.ContentItemRecord == content.Record && vote.Dimension == "Favorite").FirstOrDefault();
+            var currentVote = _votingService.Get(vote => 
+                vote.Username == currentUser.UserName && 
+                vote.ContentItemRecord == content.Record && 
+                vote.Dimension == Constants.Dimension).FirstOrDefault();
 
             if (currentVote != null) {
                 _votingService.RemoveVote(currentVote);
             }
             else {
-                _votingService.Vote(content, currentUser.UserName, HttpContext.Request.UserHostAddress, 1, "Favorite");
+                _votingService.Vote(content, currentUser.UserName, HttpContext.Request.UserHostAddress, 1, Constants.Dimension);
             }
 
             return this.RedirectLocal(returnUrl, "~/");

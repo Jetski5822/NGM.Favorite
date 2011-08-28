@@ -31,10 +31,10 @@ namespace NGM.Favorite.Drivers {
             var currentUser = _orchardServices.WorkContext.CurrentUser;
 
             if (currentUser != null) {
-                var resultRecord = _votingService.GetResult(part.ContentItem.Id, "sum", "Favorite");
+                var resultRecord = _votingService.GetResult(part.ContentItem.Id, "sum", Constants.Dimension);
 
                 part.IsFavorite = (resultRecord != null && resultRecord.Value > 0.0);
-                part.NumberOfFavorites = _votingService.Get(vote => vote.Username == currentUser.UserName && vote.Dimension == "Favorite").Sum(o => o.Value);
+                part.NumberOfFavorites = _votingService.Get(vote => vote.Username == currentUser.UserName && vote.Dimension == Constants.Dimension).Sum(o => o.Value);
             }
 
             return part;
