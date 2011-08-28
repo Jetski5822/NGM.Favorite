@@ -1,7 +1,7 @@
 ﻿Name: Favorite
 AntiForgery: enabled
 Author: Nicholas Mayne
-Website: https://github.com/Jetski5822/Vote-Up-Down-Module
+Website: https://github.com/Jetski5822/Favorite-Module
 Version: 1.0
 OrchardVersion: 1.2.41
 Description: Provides a ability to mark a content item as a favorite.
