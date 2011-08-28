@@ -1,0 +1,36 @@
+﻿.marked-as-favorite
+{
+	background: transparent url(images/star-15.png) no-repeat top left;
+}
+
+.notmarked-as-favorite
+{
+	background: transparent url(images/star-0.png) no-repeat top left;
+}
+
+/* http://www.ampsoft.net/webdesign-l/image-button.html */
+.favorite {
+	width: 30px;
+	height: 30px;
+	padding: 30px 0 0;
+	margin: 0;
+	border: 0;
+	overflow: hidden;
+	vertical-align: middle;
+	cursor: pointer; /* hand-shaped cursor */
+	cursor: hand; /* IE 5.x */
+}
+form>.favorite { /* For non-IE browsers*/
+	height: 0px;
+}
+
+.favorite-current-result
+{
+	width: 30px;
+	text-align: center;	
+}
+
+.favorite-count
+{
+	font-weight: bold;	
+}

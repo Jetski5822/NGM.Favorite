@@ -1,0 +1,22 @@
+﻿@using Orchard.Utility.Extensions;
+@{
+    Style.Require("NGM.Favorite");
+
+    bool userCanRate = Request.IsAuthenticated;
+}
+<div class="favorite-rating">
+  @if (userCanRate) {
+      using (Html.BeginFormAntiForgeryPost(Url.Action("Apply", "Vote", new { area = "NGM.Favorite" }), FormMethod.Post, new { @class = "rate" })) {
+        if (Model.IsFavorite) {
+        <button class="favorite marked-as-favorite" type="submit" value="true">@T("Mark as favorite")</button>
+        } else { 
+        <button class="favorite notmarked-as-favorite" type="submit" value="true">@T("Un-mark as favorite")</button>
+        }
+      <div class="favorite-current-result">
+        <span class="favorite-count">@Model.NumberOfFavorites</span>
+      </div>
+      @Html.Hidden("contentId", (int)Model.ContentItem.Id)
+      @Html.Hidden("ReturnUrl", Context.Request.ToUrlString()) 
+    }
+  }
+</div>

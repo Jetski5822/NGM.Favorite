@@ -1,0 +1,7 @@
+﻿@model NGM.Favorite.Settings.FavoriteTypePartSettings
+<fieldset>
+    <div>
+        @Html.EditorFor(m => m.ShowVoter)
+        <label class="forcheckbox" for="@Html.FieldIdFor(m => m.ShowVoter)">@T("Enable favorite marker")</label>
+    </div>
+</fieldset>
