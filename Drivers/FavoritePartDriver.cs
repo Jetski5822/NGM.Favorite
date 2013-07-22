@@ -3,14 +3,15 @@ using Contrib.Voting.Services;
 using NGM.Favorite.Models;
 using Orchard;
 using Orchard.ContentManagement.Drivers;
+using Orchard.Security;
 
 namespace NGM.Favorite.Drivers {
     public class FavoritePartDriver : ContentPartDriver<FavoritePart> {
-        private readonly IOrchardServices _orchardServices;
+        private readonly IAuthenticationService _authenticationService;
         private readonly IVotingService _votingService;
 
-        public FavoritePartDriver(IOrchardServices orchardServices, IVotingService votingService) {
-            _orchardServices = orchardServices;
+        public FavoritePartDriver(IAuthenticationService authenticationService, IVotingService votingService) {
+            _authenticationService = authenticationService;
             _votingService = votingService;
         }
 
@@ -28,7 +29,7 @@ namespace NGM.Favorite.Drivers {
         }
 
         private FavoritePart BuildVoteUpDown(FavoritePart part) {
-            var currentUser = _orchardServices.WorkContext.CurrentUser;
+            var currentUser = _authenticationService.GetAuthenticatedUser();
 
             if (currentUser != null) {
                 var resultRecord = _votingService.GetResult(part.ContentItem.Id, "sum", Constants.Dimension);

@@ -1,11 +1,11 @@
 ﻿.marked-as-favorite
 {
-	background: transparent url(images/star-15.png) no-repeat top left;
+	background: transparent url(../Content/Images/star-15.png) no-repeat top left;
 }
 
 .notmarked-as-favorite
 {
-	background: transparent url(images/star-0.png) no-repeat top left;
+	background: transparent url(../Content/Images/star-0.png) no-repeat top left;
 }
 
 /* http://www.ampsoft.net/webdesign-l/image-button.html */

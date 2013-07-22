@@ -2,8 +2,8 @@
 AntiForgery: enabled
 Author: Nicholas Mayne
 Website: https://github.com/Jetski5822/Favorite-Module
-Version: 0.5.0
-OrchardVersion: 1.2.41
+Version: 1.0.0
+OrchardVersion: 1.7.0
 Description: Provides a ability to mark a content item as a favorite.
 Features:
     NGM.Favorite:

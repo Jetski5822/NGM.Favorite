@@ -5,6 +5,7 @@ using NGM.Favorite.Models;
 using Orchard;
 using Orchard.ContentManagement;
 using Orchard.Localization;
+using Orchard.Mvc;
 using Orchard.Mvc.Extensions;
 
 namespace NGM.Favorite.Controllers {
@@ -12,11 +13,16 @@ namespace NGM.Favorite.Controllers {
         private readonly IOrchardServices _orchardServices;
         private readonly IContentManager _contentManager;
         private readonly IVotingService _votingService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public VoteController(IOrchardServices orchardServices, IContentManager contentManager, IVotingService votingService) {
+        public VoteController(IOrchardServices orchardServices, 
+            IContentManager contentManager, 
+            IVotingService votingService,
+            IHttpContextAccessor httpContextAccessor) {
             _orchardServices = orchardServices;
             _contentManager = contentManager;
             _votingService = votingService;
+            _httpContextAccessor = httpContextAccessor;
             T = NullLocalizer.Instance;
         }
 
@@ -41,7 +47,7 @@ namespace NGM.Favorite.Controllers {
                 _votingService.RemoveVote(currentVote);
             }
             else {
-                _votingService.Vote(content, currentUser.UserName, HttpContext.Request.UserHostAddress, 1, Constants.Dimension);
+                _votingService.Vote(content, currentUser.UserName, _httpContextAccessor.Current().Request.UserHostAddress, 1, Constants.Dimension);
             }
 
             return this.RedirectLocal(returnUrl, "~/");
